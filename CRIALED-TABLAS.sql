@@ -1,25 +1,3 @@
-CREATE DATABASE  "CRIALED";
-
-CREATE TABLE EMPLEADO (
-  id_empleado SERIAL PRIMARY KEY,
-  nombres VARCHAR(255) NOT NULL,
-  apellidos VARCHAR(255) NOT NULL,
-  cedula VARCHAR(10) NOT NULL,
-  tiempo_exp_general INTEGER NOT NULL,
-  numero_contacto VARCHAR NOT NULL,
-  id_desempeno INT NOT NULL,
-  FOREIGN KEY (id_desempeno) REFERENCES DESEMPENO(id_desempeno)
-);
-CREATE TABLE PROYECTO (
-  id_proyecto SERIAL PRIMARY KEY, -- Use SERIAL for auto-incrementing ID
-  nombre_proyecto VARCHAR(255) NOT NULL,
-  cliente VARCHAR(255) NOT NULL,
-  fecha_inicio DATE NOT NULL,
-  fecha_fin DATE NOT NULL,
-  presupuesto DECIMAL(10,2) NOT NULL,
-  estado BOOLEAN NOT NULL
-);
-
 CREATE TABLE AREA (
   id_area SERIAL PRIMARY KEY,
   nombre_area VARCHAR(255) NOT NULL
@@ -31,6 +9,27 @@ CREATE TABLE DESEMPENO (
   tiempo_desempeño INTEGER NOT NULL,
   puntuación_desempeño DECIMAL(10,2) NOT NULL,
   FOREIGN KEY (id_area) REFERENCES AREA(id_area)
+);
+
+CREATE TABLE EMPLEADO (
+  id_empleado SERIAL PRIMARY KEY,
+  nombres VARCHAR(255) NOT NULL,
+  apellidos VARCHAR(255) NOT NULL,
+  cedula VARCHAR(10) NOT NULL,
+  tiempo_exp_general INTEGER NOT NULL,
+  numero_contacto VARCHAR NOT NULL,
+  id_desempeno INT NOT NULL,
+  FOREIGN KEY (id_desempeno) REFERENCES DESEMPENO(id_desempeno)
+);
+
+CREATE TABLE PROYECTO (
+  id_proyecto SERIAL PRIMARY KEY,
+  nombre_proyecto VARCHAR(255) NOT NULL,
+  cliente VARCHAR(255) NOT NULL,
+  fecha_inicio DATE NOT NULL,
+  fecha_fin DATE NOT NULL,
+  presupuesto DECIMAL(10,2) NOT NULL,
+  estado BOOLEAN NOT NULL
 );
 
 CREATE TABLE CONTRATO (
