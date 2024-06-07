@@ -1,0 +1,210 @@
+<mxfile host="Electron" modified="2024-06-07T15:34:31.973Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.8 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="bhoYAGoYcP6l-PuXfxvV" version="24.4.8" type="device">
+  <diagram name="Página-1" id="lr0Yw2WSkKTNIkCCuQ-g">
+    <mxGraphModel dx="1500" dy="887" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1650" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-1" value="Encargado de Área" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="82" y="20" width="185" height="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-2" value="Módulo de Recomendación" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="425" y="20" width="202" height="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-3" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="32" y="260" width="286" height="343" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-4" value="[Estado actualizado]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-3">
+          <mxGeometry x="30" width="256" height="18.24468085106383" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-5" value="[No actualizado]" style="shape=line;dashed=1;whiteSpace=wrap;verticalAlign=top;labelPosition=center;verticalLabelPosition=middle;align=center;strokeColor=#B3B3B3;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-3">
+          <mxGeometry y="124.06382978723404" width="286" height="2.7367021276595747" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-6" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="82" y="663" width="446" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-7" value="[Existen posibles retrasos]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-6">
+          <mxGeometry x="30" width="416" height="15.822784810126583" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-8" value="[No existen retrasos]" style="shape=line;dashed=1;whiteSpace=wrap;verticalAlign=top;labelPosition=center;verticalLabelPosition=middle;align=center;strokeColor=#B3B3B3;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-6">
+          <mxGeometry y="126.58227848101266" width="446" height="2.373417721518987" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-9" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="20" y="1050" width="724" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-10" value="[Se ha cumplido]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-9">
+          <mxGeometry x="30" width="694" height="16.713881019830026" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-11" value="[No se ha cumplido]" style="shape=line;dashed=1;whiteSpace=wrap;verticalAlign=top;labelPosition=center;verticalLabelPosition=middle;align=center;strokeColor=#B3B3B3;" vertex="1" parent="8UG27pQmcf1Z6j6i45Yc-9">
+          <mxGeometry y="66.8555240793201" width="724" height="2.507082152974504" as="geometry" />
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-12" value="Inicio" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="100" />
+              <mxPoint x="225" y="130" />
+            </Array>
+            <mxPoint x="174.3939393939395" y="100" as="sourcePoint" />
+            <mxPoint x="174.3939393939395" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-13" value="Monitorear progreso de tareas" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="150" />
+              <mxPoint x="225" y="180" />
+            </Array>
+            <mxPoint x="174.3939393939395" y="150" as="sourcePoint" />
+            <mxPoint x="174.3939393939395" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-14" value="Estado actualizado?" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="210" />
+              <mxPoint x="225" y="240" />
+            </Array>
+            <mxPoint x="174.3939393939395" y="210.0000000000001" as="sourcePoint" />
+            <mxPoint x="174.3939393939395" y="240.0000000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-15" value="Evaluar posibles retrasos o problemas" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="341" />
+              <mxPoint x="225" y="371" />
+            </Array>
+            <mxPoint x="174.13043478260875" y="340.9999999999999" as="sourcePoint" />
+            <mxPoint x="174.13043478260875" y="370.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-16" value="Actualizar estado de actividades" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="472" />
+              <mxPoint x="225" y="502" />
+            </Array>
+            <mxPoint x="174.13043478260875" y="472" as="sourcePoint" />
+            <mxPoint x="174.13043478260875" y="502" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-17" value="Evaluar posibles retrasos o problemas" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="556" />
+              <mxPoint x="225" y="586" />
+            </Array>
+            <mxPoint x="174.13043478260875" y="556" as="sourcePoint" />
+            <mxPoint x="174.13043478260875" y="586" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-18" value="Existen posibles retrasos?" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="623" />
+              <mxPoint x="225" y="653" />
+            </Array>
+            <mxPoint x="174" y="623" as="sourcePoint" />
+            <mxPoint x="174" y="653" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-20" value="Notificación de advertencia enviada" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="753" />
+            </Array>
+            <mxPoint x="525.5" y="753" as="sourcePoint" />
+            <mxPoint x="174" y="753" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-21" value="Fin" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="863" />
+              <mxPoint x="225" y="893" />
+            </Array>
+            <mxPoint x="174" y="863" as="sourcePoint" />
+            <mxPoint x="174" y="893" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-22" value="Se ha cumplido con las condiciones de plazo?" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="943" />
+              <mxPoint x="225" y="973" />
+            </Array>
+            <mxPoint x="174" y="943" as="sourcePoint" />
+            <mxPoint x="174" y="973" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-23" value="Fin" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="225" y="1074" />
+              <mxPoint x="225" y="1104" />
+            </Array>
+            <mxPoint x="174" y="1074" as="sourcePoint" />
+            <mxPoint x="174" y="1104" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-25" value="Notificación de incumplimiento enviada" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="362.5" y="1190" />
+            </Array>
+            <mxPoint x="528" y="1190" as="sourcePoint" />
+            <mxPoint x="176.5" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-26" value="Proporcionar recomendaciones sobre el personal necesario" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="583" y="1210" />
+              <mxPoint x="583" y="1240" />
+            </Array>
+            <mxPoint x="532.5" y="1210" as="sourcePoint" />
+            <mxPoint x="532.5" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-27" value="Recomendaciones proporcionadas" style="verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;dashed=1;dashPattern=2 3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="367" y="1294" />
+            </Array>
+            <mxPoint x="532.5" y="1294" as="sourcePoint" />
+            <mxPoint x="181" y="1294" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-28" value="Revisar personal disponible y habilidades" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="232" y="1348" />
+              <mxPoint x="232" y="1378" />
+            </Array>
+            <mxPoint x="181" y="1348" as="sourcePoint" />
+            <mxPoint x="181" y="1378" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-29" value="Asignar más personal" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="232" y="1432" />
+              <mxPoint x="232" y="1462" />
+            </Array>
+            <mxPoint x="181" y="1432" as="sourcePoint" />
+            <mxPoint x="181" y="1462" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8UG27pQmcf1Z6j6i45Yc-30" value="Monitorear progreso de tareas" style="curved=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="232" y="1516" />
+              <mxPoint x="232" y="1546" />
+            </Array>
+            <mxPoint x="181" y="1516" as="sourcePoint" />
+            <mxPoint x="181" y="1546" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
