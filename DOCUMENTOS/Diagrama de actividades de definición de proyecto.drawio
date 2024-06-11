@@ -1,0 +1,78 @@
+<mxfile host="Electron" modified="2024-06-11T14:24:47.191Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.5.1 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="IVP0ZwNddiLkeBg2G7ia" version="24.5.1" type="device">
+  <diagram name="Página-1" id="lbsP395qA-Y7YZo3UMR6">
+    <mxGraphModel dx="1290" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1650" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CwWxuYzc2peS4UzDzWww-31" value="Sistema" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="620" y="40" width="271" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-32" value="Registrar en PROYECTO" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="669" y="65" width="174" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-33" value="Proyecto registrado" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="687" y="146" width="137" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-34" value="Registrar en PRESUPUESTO" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="655" y="308" width="201" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-35" value="Presupuesto registrado" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="676" y="389" width="160" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-40" value="Gerente" style="whiteSpace=wrap;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="352" y="40" width="268" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-41" value="Iniciar Proyecto" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="430" y="65" width="112" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-42" value="Definir Proyecto" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="429" y="146" width="115" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-43" value="Asignar Presupuesto a Áreas" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="391" y="250" width="198" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-46" value="Fin" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="738.5" y="460" width="35" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-47" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5004734311785016;exitY=1;entryX=0.49611325471297557;entryY=0;rounded=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-41" target="CwWxuYzc2peS4UzDzWww-42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-48" value="" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=1;rounded=0;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-42" target="CwWxuYzc2peS4UzDzWww-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-49" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.49713147919753503;exitY=1;entryX=0.5000064042362854;entryY=0;rounded=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-32" target="CwWxuYzc2peS4UzDzWww-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-50" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5000064042362854;exitY=1;entryX=0.5;entryY=0;rounded=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-33" target="CwWxuYzc2peS4UzDzWww-43">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-51" value="" style="curved=1;startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0.5;entryY=0;rounded=0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-43" target="CwWxuYzc2peS4UzDzWww-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-52" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5000043650764731;exitY=1;entryX=0.49688048362731935;entryY=0;rounded=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-34" target="CwWxuYzc2peS4UzDzWww-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CwWxuYzc2peS4UzDzWww-59" value="" style="curved=1;startArrow=none;endArrow=block;entryX=0.5000250680106026;entryY=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="CwWxuYzc2peS4UzDzWww-35" target="CwWxuYzc2peS4UzDzWww-46">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="755.5008773803711" y="931" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
