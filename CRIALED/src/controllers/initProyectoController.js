@@ -55,3 +55,25 @@ exports.initProyecto = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+
+  exports.updateFechaFinProyecto = async (req, res) => {
+    try {
+      const { id_proyecto, fecha_fin } = req.body;
+      const proyecto = await Proyecto.findByPk(id_proyecto);
+      if (!proyecto) {
+        return res.status(404).json({ error: 'Proyecto no encontrado' });
+      }
+  
+      await proyecto.update({ fecha_fin });
+      res.status(200).json({
+        message: 'Fecha de fin del proyecto actualizada',
+        id_proyecto: proyecto.id_proyecto,
+        id_contrato: proyecto.id_contrato,
+        nombre_proyecto: proyecto.nombre_proyecto,
+        fecha_inicio: proyecto.fecha_inicio,
+        fecha_fin: proyecto.fecha_fin,
+      });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
