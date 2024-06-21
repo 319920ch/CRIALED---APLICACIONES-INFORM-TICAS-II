@@ -49,12 +49,14 @@ CREATE TABLE PROYECTO (
 );
 
 CREATE TABLE PRESUPUESTO (
-  id_presupuesto SERIAL PRIMARY KEY,
-  id_contrato INT NOT NULL,
-  id_area INT NOT NULL,
-  monto DECIMAL(10,2) NOT NULL,
-  FOREIGN KEY (id_contrato) REFERENCES CONTRATO(id_contrato),
-  FOREIGN KEY (id_area) REFERENCES AREA(id_area)
+  id_contrato INTEGER NOT NULL,
+  id_proyecto INTEGER NOT NULL,
+  id_area INTEGER NOT NULL,
+  monto DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (id_contrato, id_proyecto, id_area),
+  FOREIGN KEY (id_contrato) REFERENCES contrato(id_contrato),
+  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto),
+  FOREIGN KEY (id_area) REFERENCES area(id_area)
 );
 
 CREATE TABLE ROL (
