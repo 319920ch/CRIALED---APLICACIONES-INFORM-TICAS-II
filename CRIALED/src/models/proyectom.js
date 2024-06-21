@@ -43,7 +43,6 @@ const Proyecto = sequelize.define('Proyecto', {
 });
 
 Proyecto.belongsTo(Estado, { foreignKey: 'id_estado', onDelete: 'CASCADE' });
-
-module.exports = Proyecto;
+Proyecto.belongsTo(Contrato, { foreignKey: 'id_contrato' });
 
 module.exports = Proyecto;
