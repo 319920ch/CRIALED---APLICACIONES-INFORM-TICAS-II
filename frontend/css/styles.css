@@ -8,10 +8,33 @@ body {
 
 .nav-link {
     color: #fff !important;
+    position: relative;
 }
 
 .nav-link:hover {
     color: #000 !important;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.hover-item .hover-description {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.hover-item:hover .hover-description {
+    display: block;
 }
 
 .logo {
