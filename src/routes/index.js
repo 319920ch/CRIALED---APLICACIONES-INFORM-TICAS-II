@@ -12,6 +12,10 @@ const proyectoRoutes = require('./proyectoRoutes');
 const rolRoutes = require('./rolRoutes');
 const tareaRoutes = require('./tareaRoutes');
 const usuarioRoutes = require('./usuarioRoutes');
+const estadoRoutes = require('./estadoRoutes');
+const authRoutes = require('./authRoutes');
+const proyectosRoutes = require('./initProyectoRoutes');
+const areasPresupuesto = require('./areaPresupuestoRoutes');
 
 router.use('/areas', areaRoutes);
 router.use('/asignaciones', asignacionRoutes);
@@ -23,5 +27,9 @@ router.use('/proyectos', proyectoRoutes);
 router.use('/roles', rolRoutes);
 router.use('/tareas', tareaRoutes);
 router.use('/usuarios', usuarioRoutes);
+router.use('/estados', estadoRoutes);
+router.use('/auth', authRoutes);
+router.use('/initProyecto', proyectosRoutes);
+router.use('/areasPresupuesto', areasPresupuesto);
 
 module.exports = router;

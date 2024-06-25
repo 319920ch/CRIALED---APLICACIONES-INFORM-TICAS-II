@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const routes = require('./routes/index');
+const routes = require('./routes/index.js');
 
 // Configuración de la aplicación
 app.use(cors());

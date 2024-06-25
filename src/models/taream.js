@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
 const Proyecto = require('./proyectom');
 const Area = require('./aream');
+const Estado = require('./estadom');
 
 const Tarea = sequelize.define('Tarea', {
   id_tarea: {
@@ -37,9 +38,13 @@ const Tarea = sequelize.define('Tarea', {
     type: DataTypes.DECIMAL(10, 2), 
     allowNull: false,
   },
-  estado: {
-    type: DataTypes.BOOLEAN,
+  id_estado: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: Estado,
+      key: 'id_estado',
+    }
   },
   cant_necesaria: {
     type: DataTypes.INTEGER,

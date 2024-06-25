@@ -3,14 +3,9 @@ const sequelize = require('../database/conexiones');
 const Rol = require('./rolm');
 
 const Usuario = sequelize.define('Usuario', {
-  id_usuario: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
   nombre: {
     type: DataTypes.STRING,
-    allowNull: false,
+    primaryKey: true,
   },
   correo_electronico: {
     type: DataTypes.STRING,
