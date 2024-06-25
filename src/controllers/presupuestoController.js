@@ -3,7 +3,12 @@ const Presupuesto = require('../models/presupuestom');
 // Crear un nuevo presupuesto
 exports.createPresupuesto = async (req, res) => {
   try {
-    const nuevoPresupuesto = await Presupuesto.create(req.body);
+    const nuevoPresupuesto = await Presupuesto.create({
+      id_contrato: req.body.id_contrato,
+      id_proyecto: req.body.id_proyecto,
+      id_area: req.body.id_area,
+      monto: req.body.monto,
+    });
     res.status(201).json(nuevoPresupuesto);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -23,7 +28,13 @@ exports.getPresupuestos = async (req, res) => {
 // Obtener un presupuesto por ID
 exports.getPresupuestoById = async (req, res) => {
   try {
-    const presupuesto = await Presupuesto.findByPk(req.params.id);
+    const presupuesto = await Presupuesto.findOne({
+      where: {
+        id_contrato: req.params.id_contrato,
+        id_proyecto: req.params.id_proyecto,
+        id_area: req.params.id_area,
+      },
+    });
     if (presupuesto) {
       res.status(200).json(presupuesto);
     } else {
@@ -37,12 +48,18 @@ exports.getPresupuestoById = async (req, res) => {
 // Actualizar un presupuesto por ID
 exports.updatePresupuesto = async (req, res) => {
   try {
-    const [updated] = await Presupuesto.update(req.body, {
-      where: { id_presupuesto: req.params.id }
+    const presupuesto = await Presupuesto.findOne({
+      where: {
+        id_contrato: req.params.id_contrato,
+        id_proyecto: req.params.id_proyecto,
+        id_area: req.params.id_area,
+      },
     });
-    if (updated) {
-      const updatedPresupuesto = await Presupuesto.findByPk(req.params.id);
-      res.status(200).json(updatedPresupuesto);
+    if (presupuesto) {
+      await presupuesto.update({
+        monto: req.body.monto,
+      });
+      res.status(200).json(presupuesto);
     } else {
       res.status(404).json({ message: 'Presupuesto no encontrado' });
     }
@@ -54,10 +71,15 @@ exports.updatePresupuesto = async (req, res) => {
 // Eliminar un presupuesto por ID
 exports.deletePresupuesto = async (req, res) => {
   try {
-    const deleted = await Presupuesto.destroy({
-      where: { id_presupuesto: req.params.id }
+    const presupuesto = await Presupuesto.findOne({
+      where: {
+        id_contrato: req.params.id_contrato,
+        id_proyecto: req.params.id_proyecto,
+        id_area: req.params.id_area,
+      },
     });
-    if (deleted) {
+    if (presupuesto) {
+      await presupuesto.destroy();
       res.status(204).json({ message: 'Presupuesto eliminado' });
     } else {
       res.status(404).json({ message: 'Presupuesto no encontrado' });

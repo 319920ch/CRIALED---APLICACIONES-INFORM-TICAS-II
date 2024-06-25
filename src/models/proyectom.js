@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
+const Contrato = require('./contratom');
+const Estado = require('./estadom');
 
 const Proyecto = sequelize.define('Proyecto', {
   id_proyecto: {
@@ -7,11 +9,15 @@ const Proyecto = sequelize.define('Proyecto', {
     autoIncrement: true,
     primaryKey: true,
   },
-  nombre_proyecto: {
-    type: DataTypes.STRING,
+  id_contrato: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: Contrato,
+      key: 'id_contrato',
+    }
   },
-  cliente: {
+  nombre_proyecto: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -23,17 +29,20 @@ const Proyecto = sequelize.define('Proyecto', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  presupuesto: {
-    type: DataTypes.DECIMAL(10, 2),
+  id_estado: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-  },
-  estado: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
+    references: {
+      model: Estado,
+      key: 'id_estado',
+    }
   }
 }, {
   tableName: 'proyecto',
   timestamps: false,
 });
+
+Proyecto.belongsTo(Estado, { foreignKey: 'id_estado', onDelete: 'CASCADE' });
+Proyecto.belongsTo(Contrato, { foreignKey: 'id_contrato' });
 
 module.exports = Proyecto;

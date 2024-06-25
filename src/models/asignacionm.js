@@ -9,12 +9,12 @@ const Asignacion = sequelize.define('Asignacion', {
     autoIncrement: true,
     primaryKey: true,
   },
-  id_usuario: {
-    type: DataTypes.INTEGER,
+  nombre: {
+    type: DataTypes.STRING,
     allowNull: false,
     references: {
       model: Usuario,
-      key: 'id_usuario',
+      key: 'nombre',
     }
   },
   id_tarea: {

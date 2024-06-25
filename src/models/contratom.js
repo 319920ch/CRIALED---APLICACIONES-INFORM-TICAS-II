@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
-const Proyecto = require('./proyectom');
+const Estado = require('./estadom');
 
 const Contrato = sequelize.define('Contrato', {
   id_contrato: {
@@ -8,12 +8,12 @@ const Contrato = sequelize.define('Contrato', {
     autoIncrement: true,
     primaryKey: true,
   },
-  id_proyecto: {
+  id_estado: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Proyecto,
-      key: 'id_proyecto',
+      model: Estado,
+      key: 'id_estado',
     }
   },
   cliente: {
