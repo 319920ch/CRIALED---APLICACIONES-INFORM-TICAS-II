@@ -1,7 +1,7 @@
 const Usuario = require('../models/usuariom');
 const { generateToken, verifyToken } = require('../utils/jwt');
 const { sendEmail } = require('../utils/mailer');
-const bcrypt = require('bcryptjs'); // Asegúrate de tener esta línea para importar bcrypt
+const bcrypt = require('bcryptjs'); 
 
 exports.forgotPasswordService = async (correo_electronico, protocol, host) => {
   const user = await Usuario.findOne({ where: { correo_electronico } });
