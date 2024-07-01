@@ -1,7 +1,6 @@
-// src/utils/validaciones.js
 const { check, validationResult } = require('express-validator');
 
-exports.registroValidationRules = [
+exports.registroValidationRules = () => [
   check('nombre')
     .notEmpty().withMessage('El nombre es obligatorio'),
   check('correo_electronico')

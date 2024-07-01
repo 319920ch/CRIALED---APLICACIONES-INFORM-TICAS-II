@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuariom');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator');
 
 exports.login = async (req, res) => {
   const { username: nombre, password: contrasena } = req.body;
@@ -38,11 +39,13 @@ exports.login = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
-  const { nombre, correo_electronico, contrasena, id_rol } = req.body;
-
-  if (!nombre || !correo_electronico || !contrasena || !id_rol) {
-    return res.status(400).json({ message: 'All fields are required' });
+  // Manejar errores de validación
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+
+  const { nombre, correo_electronico, contrasena, id_rol } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(contrasena, 10);
