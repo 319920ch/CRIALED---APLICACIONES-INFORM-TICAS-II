@@ -11,6 +11,9 @@ exports.createRol = async (req, res) => {
     const rol = await createRolService(req.body);
     res.status(201).json(rol);
   } catch (error) {
+    if (error.message === 'El nombre del rol ya está en uso') {
+      return res.status(400).json({ error: error.message });
+    }
     res.status(500).json({ error: error.message });
   }
 };

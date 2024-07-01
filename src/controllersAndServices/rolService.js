@@ -1,6 +1,10 @@
 const Rol = require('../models/rolm');
 
 exports.createRolService = async (data) => {
+  const existingRole = await Rol.findOne({ where: { nombre_rol: data.nombre_rol } });
+  if (existingRole) {
+    throw new Error('El nombre del rol ya está en uso');
+  }
   return await Rol.create(data);
 };
 
