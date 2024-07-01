@@ -1,65 +1,103 @@
-const sequelize = require('../database/conexiones.js');
-const Proyecto = require('./proyectom.js');
-const Area = require('./aream');
-const Desempeno = require('./desempenom');
-const Contrato = require('./contratom');
-const Presupuesto = require('./presupuestom');
-const Rol = require('./rolm');
-const Usuario = require('./usuariom');
-const Tarea = require('./taream');
-const Asignacion = require('./asignacionm');
-const Empleado = require('./empleadom');
+const express = require('express');
+const path = require('path');
+const router = express.Router();
+const { validarUnicoContratoActivo, obtenerRecomendaciones } = require('../procesos/contrato.js');
+const { validarCedulaEcuatoriana, validarFechasContrato, validarFechasProyecto } = require('../procesos/validaciones.js');
 
-// Definir las relaciones entre los modelos
-Area.hasMany(Desempeno, { foreignKey: 'id_area' });
-Desempeno.belongsTo(Area, { foreignKey: 'id_area' });
+// Importar y usar las rutas de cada entidad
+const areaRoutes = require('./areaRoutes');
+const asignacionRoutes = require('./asignacionRoutes');
+const contratoRoutes = require('./contratoRoutes');
+const desempenoRoutes = require('./desempenoRoutes');
+const empleadoRoutes = require('./empleadoRoutes');
+const presupuestoRoutes = require('./presupuestoRoutes');
+const proyectoRoutes = require('./proyectoRoutes');
+const rolRoutes = require('./rolRoutes');
+const tareaRoutes = require('./tareaRoutes');
+const usuarioRoutes = require('./usuarioRoutes');
+const estadoRoutes = require('./estadoRoutes');
+const authRoutes = require('./authRoutes');
+const proyectosRoutes = require('./initProyectoRoutes');
+const areasPresupuesto = require('./areaPresupuestoRoutes');
 
-Proyecto.hasMany(Contrato, { foreignKey: 'id_proyecto' });
-Contrato.belongsTo(Proyecto, { foreignKey: 'id_proyecto' });
+router.use('/areas', areaRoutes);
+router.use('/asignaciones', asignacionRoutes);
+router.use('/contratos', contratoRoutes);
+router.use('/desempenos', desempenoRoutes);
+router.use('/empleados', empleadoRoutes);
+router.use('/presupuestos', presupuestoRoutes);
+router.use('/proyectos', proyectoRoutes);
+router.use('/roles', rolRoutes);
+router.use('/tareas', tareaRoutes);
+router.use('/usuarios', usuarioRoutes);
+router.use('/estados', estadoRoutes);
+router.use('/auth', authRoutes);
+router.use('/initProyecto', proyectosRoutes);
+router.use('/areasPresupuesto', areasPresupuesto);
 
-Contrato.hasMany(Presupuesto, { foreignKey: 'id_contrato' });
-Presupuesto.belongsTo(Contrato, { foreignKey: 'id_contrato' });
-
-Area.hasMany(Presupuesto, { foreignKey: 'id_area' });
-Presupuesto.belongsTo(Area, { foreignKey: 'id_area' });
-
-Rol.hasMany(Usuario, { foreignKey: 'id_rol' });
-Usuario.belongsTo(Rol, { foreignKey: 'id_rol' });
-
-Proyecto.hasMany(Tarea, { foreignKey: 'id_proyecto' });
-Tarea.belongsTo(Proyecto, { foreignKey: 'id_proyecto' });
-
-Area.hasMany(Tarea, { foreignKey: 'id_area' });
-Tarea.belongsTo(Area, { foreignKey: 'id_area' });
-
-Usuario.hasMany(Asignacion, { foreignKey: 'id_usuario' });
-Asignacion.belongsTo(Usuario, { foreignKey: 'id_usuario' });
-
-Tarea.hasMany(Asignacion, { foreignKey: 'id_tarea' });
-Asignacion.belongsTo(Tarea, { foreignKey: 'id_tarea' });
-
-Desempeno.hasMany(Empleado, { foreignKey: 'id_desempeno' });
-Empleado.belongsTo(Desempeno, { foreignKey: 'id_desempeno' });
-
-module.exports = {
-  sequelize,
-  Proyecto,
-  Area,
-  Desempeno,
-  Contrato,
-  Presupuesto,
-  Rol,
-  Usuario,
-  Tarea,
-  Asignacion,
-  Empleado
-};
-
-// Sincronizar todos los modelos con la base de datos
-sequelize.sync({ force: false }) // force: true eliminará las tablas existentes y las volverá a crear
-  .then(() => {
-    console.log('Tablas sincronizadas correctamente.');
-  })
-  .catch((error) => {
-    console.error('Error al sincronizar las tablas:', error);
+// Ruta para crear un nuevo contrato
+router.post('/contratos', async (req, res) => {
+    try {
+      const { empleadoId, fechaInicio, fechaFin, activo } = req.body;
+  
+      // Validar fechas del contrato
+      validarFechasContrato(fechaInicio, fechaFin);
+  
+      // Validar que solo haya un contrato activo
+      await validarUnicoContratoActivo();
+  
+      const contrato = await Contract.create({ empleadoId, fechaInicio, fechaFin, activo });
+      res.status(201).json(contrato);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   });
+  
+  // Ruta para obtener recomendaciones de asignación de empleados
+  router.get('/proyectos/:proyectoId/recomendaciones', async (req, res) => {
+    try {
+      const proyectoId = req.params.proyectoId;
+      const asignaciones = await obtenerRecomendaciones(proyectoId);
+      res.json(asignaciones);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+  
+  // Ruta para validar cédula ecuatoriana
+  router.post('/validar-cedula', (req, res) => {
+    try {
+      const { cedula } = req.body;
+      const esValida = validarCedulaEcuatoriana(cedula);
+  
+      if (esValida) {
+        res.status(200).json({ mensaje: 'Cédula válida' });
+      } else {
+        res.status(400).json({ mensaje: 'Cédula inválida' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+  
+  // Ruta para crear un nuevo proyecto con validación de fechas
+  router.post('/proyectos', async (req, res) => {
+    try {
+      const { nombre, fechaInicio, fechaFin } = req.body;
+  
+      // Validar fechas del proyecto
+      validarFechasProyecto(fechaInicio, fechaFin);
+  
+      const proyecto = await Project.create({ nombre, fechaInicio, fechaFin });
+      res.status(201).json(proyecto);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+// Ruta predeterminada para redirigir a index.html
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../public/index.html'));
+});
+
+module.exports = router;

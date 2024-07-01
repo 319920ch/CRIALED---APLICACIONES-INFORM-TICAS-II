@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require('sequelize');
-
 const sequelize = require('../database/conexiones');
 
 const Rol = sequelize.define('Rol', {
@@ -10,7 +9,8 @@ const Rol = sequelize.define('Rol', {
   },
   nombre_rol: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   }
 }, {
   timestamps: false,

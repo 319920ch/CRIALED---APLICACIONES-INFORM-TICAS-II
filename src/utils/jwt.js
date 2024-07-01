@@ -1,16 +1,14 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/config');
+const SECRET_KEY = process.env.JWT_SECRET || 'crialed2024';  // La clave secreta en el archivo .env
 
-const generateToken = (payload) => {
-    return jwt.sign(payload, config.jwtSecret, { expiresIn: '1h' });
-  };
+exports.generateToken = (payload) => {
+  return jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' });
+};
 
-const verifyToken = (token, expiresIn) => {
+exports.verifyToken = (token) => {
   try {
-    return jwt.verify(token, config.jwtSecret, { expiresIn });
-  } catch (error) {
+    return jwt.verify(token, SECRET_KEY);
+  } catch (e) {
     return null;
   }
 };
-
-module.exports = { generateToken, verifyToken };

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const desempenoController = require('../controllers/desempenoController');
+const desempenoController = require('../controllersAndServices/desempenoController');
 
 // Rutas para los desempeños
 router.post('/', desempenoController.createDesempeno);

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Proyectos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="#" id="login-link">Iniciar sesión</a>
+  </header>
+  <h1>Gestión de Proyectos</h1>
+
+  <div class="login-container" id="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form id="login-form">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <div id="login-error" style="color: red; display: none;"></div> <!-- Contenedor para mostrar mensajes de error -->
+  </div>
+
+  <div class="button-container" id="button-container" style="display: none;">
+    <button class="big-button" onclick="navigateTo('area')">Área</button>
+    <button class="big-button" onclick="navigateTo('contrato')">Contrato</button>
+    <button class="big-button" onclick="navigateTo('empleado')">Empleado</button>
+    <button class="big-button" onclick="navigateTo('proyecto')">Proyecto</button>
+    <button class="big-button" onclick="navigateTo('usuario')">Usuario</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

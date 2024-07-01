@@ -1,19 +1,22 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
 
-const Estado = sequelize.define('Estado', {
+class Estado extends Model {}
+
+Estado.init({
   id_estado: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true,
   },
-  estado: {
+  nombre_estado: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+    unique: true,
+  },
 }, {
-  tableName: 'estado',
-  timestamps: false,
+  sequelize,
+  modelName: 'Estado',
 });
 
 module.exports = Estado;

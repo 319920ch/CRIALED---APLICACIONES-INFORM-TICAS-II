@@ -20,6 +20,7 @@ const Proyecto = sequelize.define('Proyecto', {
   nombre_proyecto: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true 
   },
   fecha_inicio: {
     type: DataTypes.DATE,

@@ -1,26 +1,26 @@
-// models/proyecto.js
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
-const Contrato = require('./contratom');
 const Estado = require('./estadom');
 
-const Proyecto = sequelize.define('Proyecto', {
+class Proyecto extends Model {}
+
+Proyecto.init({
   id_proyecto: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true,
   },
-  id_contrato: {
+  id_estado: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Contrato,
-      key: 'id_contrato',
+      model: Estado,
+      key: 'id_estado',
     }
   },
   nombre_proyecto: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   fecha_inicio: {
     type: DataTypes.DATE,
@@ -30,20 +30,9 @@ const Proyecto = sequelize.define('Proyecto', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  id_estado: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Estado,
-      key: 'id_estado',
-    }
-  }
 }, {
-  tableName: 'proyecto',
-  timestamps: false,
+  sequelize,
+  modelName: 'Proyecto',
 });
-
-Proyecto.belongsTo(Estado, { foreignKey: 'id_estado', onDelete: 'CASCADE' });
-Proyecto.belongsTo(Contrato, { foreignKey: 'id_contrato' });
 
 module.exports = Proyecto;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Roles</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="#" id="back-link">Volver</a>
+  </header>
+  <h1>Gestión de Roles</h1>
+
+  <div class="button-container">
+    <button class="big-button" onclick="showAddRoleForm()">Agregar Rol</button>
+  </div>
+
+  <table id="roles-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se insertarán las filas de roles -->
+    </tbody>
+  </table>
+
+  <div id="add-role-form" style="display: none;">
+    <h2>Agregar Rol</h2>
+    <form id="role-form">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <button type="submit">Guardar Rol</button>
+    </form>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

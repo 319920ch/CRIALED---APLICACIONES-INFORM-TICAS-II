@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 // Importar y usar las rutas de cada entidad
 const areaRoutes = require('./areaRoutes');
@@ -13,7 +14,7 @@ const rolRoutes = require('./rolRoutes');
 const tareaRoutes = require('./tareaRoutes');
 const usuarioRoutes = require('./usuarioRoutes');
 const estadoRoutes = require('./estadoRoutes');
-const authRoutes = require('./authRoutes');
+const authRoutes = require('./authRoutes'); // Importar rutas de autenticación
 const proyectosRoutes = require('./initProyectoRoutes');
 const areasPresupuesto = require('./areaPresupuestoRoutes');
 
@@ -28,8 +29,16 @@ router.use('/roles', rolRoutes);
 router.use('/tareas', tareaRoutes);
 router.use('/usuarios', usuarioRoutes);
 router.use('/estados', estadoRoutes);
-router.use('/auth', authRoutes);
+router.use('/auth', authRoutes); // Asegúrate de que las rutas de autenticación estén registradas correctamente
 router.use('/initProyecto', proyectosRoutes);
 router.use('/areasPresupuesto', areasPresupuesto);
+
+// Ruta para servir archivos estáticos
+router.use(express.static(path.join(__dirname, '../public')));
+
+// Ruta predeterminada para redirigir a index.html
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 module.exports = router;

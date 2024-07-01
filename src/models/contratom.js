@@ -1,16 +1,17 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
 const Estado = require('./estadom');
 
-const Contrato = sequelize.define('Contrato', {
+class Contrato extends Model {}
+
+Contrato.init({
   id_contrato: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true,
   },
   id_estado: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
       model: Estado,
       key: 'id_estado',
@@ -29,12 +30,12 @@ const Contrato = sequelize.define('Contrato', {
     allowNull: false,
   },
   presupuesto: {
-    type: DataTypes.DECIMAL(10, 2),
+    type: DataTypes.DECIMAL,
     allowNull: false,
-  }
+  },
 }, {
-  tableName: 'contrato',
-  timestamps: false,
+  sequelize,
+  modelName: 'Contrato',
 });
 
 module.exports = Contrato;

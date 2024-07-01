@@ -1,12 +1,14 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/conexiones');
-const Desempeno = require('./desempenom');
+const Estado = require('./estadom');
 
-const Empleado = sequelize.define('Empleado', {
+class Empleado extends Model {}
+
+Empleado.init({
   id_empleado: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true,
   },
   nombres: {
     type: DataTypes.STRING,
@@ -20,25 +22,16 @@ const Empleado = sequelize.define('Empleado', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  tiempo_exp_general: {
+  id_estado: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  numero_contacto: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  id_desempeno: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Desempeno,
-      key: 'id_desempeno',
+      model: Estado,
+      key: 'id_estado',
     }
-  }
+  },
 }, {
-  tableName: 'empleado',
-  timestamps: false,
+  sequelize,
+  modelName: 'Empleado',
 });
 
 module.exports = Empleado;
