@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const loginLink = document.getElementById('login-link');
   const buttonContainer = document.getElementById('button-container');
 
+  if (!loginLink || !buttonContainer) {
+    console.error('Elementos del DOM no encontrados: login-link o button-container');
+    return;
+  }
+  
   const user = localStorage.getItem('user');
   const token = localStorage.getItem('token');
   const isLoggedIn = user !== null && token !== null;
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.removeItem('token');
       window.location.href = '/';
     } else {
-      window.location.href = 'index.html'; // Cambia la ruta si es necesario
+      window.location.href = 'index.html';
     }
   });
 

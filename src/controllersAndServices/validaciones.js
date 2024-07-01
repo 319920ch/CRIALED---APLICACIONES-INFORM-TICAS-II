@@ -104,4 +104,38 @@ function validarCedulaEcuatoriana(cedula) {
     validarFechasProyecto,
     calcularAsignaciones
   };
-  
+
+  const { body, validationResult } = require('express-validator');
+
+const registroValidationRules = () => {
+  return [
+    body('nombre').notEmpty().withMessage('El nombre es obligatorio').bail(),
+    body('correo_electronico').isEmail().withMessage('Debe ser un correo válido').bail(),
+    body('contrasena').isLength({ min: 5, max: 25 }).withMessage('La contraseña debe tener entre 5 y 25 caracteres').bail(),
+    body('nombre').custom(async (value) => {
+      const Usuario = require('../models/usuariom');
+      const usuario = await Usuario.findOne({ where: { nombre: value } });
+      if (usuario) {
+        return Promise.reject('El nombre de usuario ya está en uso');
+      }
+    }).bail(),
+  ];
+};
+
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    return next();
+  }
+  const extractedErrors = [];
+  errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
+
+  return res.status(422).json({
+    errors: extractedErrors,
+  });
+};
+
+module.exports = {
+  registroValidationRules,
+  validate,
+};

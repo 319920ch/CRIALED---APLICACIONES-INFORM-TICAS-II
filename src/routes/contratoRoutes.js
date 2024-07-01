@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { authMiddleware, checkRole } = require('../utils/authMiddleware');
-const contratoController = require('../controllersAndServices/contratoController'); // Asegúrate de que la ruta es correcta
+const contratoController = require('../controllersAndServices/contratoController');
+//const { authMiddleware, verifyRoleMiddleware } = require('../utils/authMiddleware');
 
-router.post('/',
-    authMiddleware,
-    checkRole([1, 2]), // Solo roles con id 1 o 2 pueden crear un contrato
-    contratoController.createContrato
-  );
+router.post('/create', /*authMiddleware, verifyRoleMiddleware([1, 2]),*/ contratoController.createContrato);
 
 // Ruta para obtener todos los contratos
 router.get('/', contratoController.getContratos);

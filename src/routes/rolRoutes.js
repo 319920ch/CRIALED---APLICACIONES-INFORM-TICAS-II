@@ -10,7 +10,7 @@ router.post('/create',
         .isString().withMessage('El nombre del rol debe ser una cadena de caracteres')
     ],
     rolController.createRol);
-router.get('/', rolController.getRoles);
+router.get('/list', rolController.getAllRoles);
 router.get('/:id', rolController.getRolById);
 router.put('/:id', rolController.updateRol);
 router.delete('/:id', rolController.deleteRol);

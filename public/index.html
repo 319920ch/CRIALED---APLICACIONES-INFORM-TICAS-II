@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Proyectos</title>
+  <title>CRIALED</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <header>
     <a href="#" id="login-link">Iniciar sesión</a>
+    <a href="#" id="back-link">Volver</a>
   </header>
-  <h1>Gestión de Proyectos</h1>
+  <h1>CRIALED</h1>
 
   <div class="login-container" id="login-container">
     <h2>Iniciar Sesión</h2>
@@ -21,17 +23,19 @@
       <input type="password" id="password" name="password" required>
       <button type="submit">Iniciar sesión</button>
     </form>
-    <div id="login-error" style="color: red; display: none;"></div> <!-- Contenedor para mostrar mensajes de error -->
+    <a href="forgot-password.html">Olvidé la contraseña</a>
   </div>
 
   <div class="button-container" id="button-container" style="display: none;">
-    <button class="big-button" onclick="navigateTo('area')">Área</button>
-    <button class="big-button" onclick="navigateTo('contrato')">Contrato</button>
-    <button class="big-button" onclick="navigateTo('empleado')">Empleado</button>
-    <button class="big-button" onclick="navigateTo('proyecto')">Proyecto</button>
-    <button class="big-button" onclick="navigateTo('usuario')">Usuario</button>
+    <button class="big-button" onclick="navigateTo('usuarios.html')">Usuarios</button>
+    <button class="big-button" onclick="navigateTo('contratos.html')">Contratos</button>
+    <button class="big-button" onclick="navigateTo('empleados.html')">Empleados</button>
   </div>
 
-  <script src="script.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/role.js"></script>
+  <script src="scripts/users.js"></script>
+  <script src="script.js"></script> 
 </body>
 </html>

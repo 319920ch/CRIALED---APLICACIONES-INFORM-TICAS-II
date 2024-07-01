@@ -14,7 +14,7 @@ const rolRoutes = require('./rolRoutes');
 const tareaRoutes = require('./tareaRoutes');
 const usuarioRoutes = require('./usuarioRoutes');
 const estadoRoutes = require('./estadoRoutes');
-const authRoutes = require('./authRoutes'); // Importar rutas de autenticación
+const authRoutes = require('./authRoutes'); 
 const proyectosRoutes = require('./initProyectoRoutes');
 const areasPresupuesto = require('./areaPresupuestoRoutes');
 
@@ -29,7 +29,7 @@ router.use('/roles', rolRoutes);
 router.use('/tareas', tareaRoutes);
 router.use('/usuarios', usuarioRoutes);
 router.use('/estados', estadoRoutes);
-router.use('/auth', authRoutes); // Asegúrate de que las rutas de autenticación estén registradas correctamente
+router.use('/auth', authRoutes); 
 router.use('/initProyecto', proyectosRoutes);
 router.use('/areasPresupuesto', areasPresupuesto);
 

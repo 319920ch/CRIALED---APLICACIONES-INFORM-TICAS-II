@@ -1,35 +1,31 @@
-const { verifyToken } = require('./jwt');
 const Usuario = require('../models/usuariom');
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) {
-    return res.status(403).json({ message: 'No token provided' });
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Acceso denegado. No has iniciado sesión.' });
   }
 
-  const bearerToken = token.split(' ')[1]; // Quitar 'Bearer ' del token
-  const payload = verifyToken(bearerToken);
-  if (!payload) {
-    return res.status(401).json({ message: 'Invalid token' });
+  try {
+    const user = await Usuario.findByPk(req.session.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el servidor' });
   }
-
-  req.userId = payload.id;
-
-  // Obtener el usuario y verificar el rol
-  const usuario = await Usuario.findByPk(req.userId);
-  if (!usuario) {
-    return res.status(404).json({ message: 'User not found' });
-  }
-
-  req.user = usuario;
-  next();
 };
 
-const checkRole = (rolesPermitidos) => (req, res, next) => {
-  if (!rolesPermitidos.includes(req.user.id_rol)) {
-    return res.status(403).json({ message: 'Access denied' });
-  }
-  next();
+/*const verifyRoleMiddleware = (roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.id_rol)) {
+      return res.status(403).json({ message: 'No dispones del rol para este proceso' });
+    }
+    next();
+  };
 };
+PENDIENTE */
 
-module.exports = { authMiddleware, checkRole };
+module.exports = { authMiddleware /*verifyRoleMiddleware*/ };

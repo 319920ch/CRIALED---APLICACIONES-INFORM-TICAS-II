@@ -1,19 +1,27 @@
-// scripts/auth.js
 document.addEventListener('DOMContentLoaded', function() {
   const loginLink = document.getElementById('login-link');
   const loginForm = document.getElementById('login-form');
-  const loginError = document.getElementById('login-error'); // Contenedor para mensajes de error
+  const loginContainer = document.getElementById('login-container');
+  const buttonContainer = document.getElementById('button-container');
 
+  if (!loginLink || !buttonContainer) {
+    console.error('Elementos del DOM no encontrados: login-link o button-container');
+    return;
+  }
+  
   const user = localStorage.getItem('user');
   const token = localStorage.getItem('token');
   const isLoggedIn = user !== null && token !== null;
 
   if (isLoggedIn) {
     loginLink.textContent = 'Cerrar sesión';
-    document.getElementById('button-container').style.display = 'flex';
+    buttonContainer.style.display = 'flex';
+    if (loginContainer) {
+      loginContainer.style.display = 'none';
+    }
   } else {
     loginLink.textContent = 'Iniciar sesión';
-    document.getElementById('button-container').style.display = 'none';
+    buttonContainer.style.display = 'none';
   }
 
   loginLink.addEventListener('click', function(event) {
@@ -21,10 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isLoggedIn) {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      window.location.reload(); // Refresca la página para actualizar el estado de sesión
+      window.location.reload();
     } else {
-      // Redirige a la página de login si no está logueado
-      window.location.href = 'index.html'; // Asegúrate de que la ruta al archivo de login sea correcta
+      window.location.href = 'index.html';
     }
   });
 
@@ -41,23 +48,36 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         body: JSON.stringify({ username, password })
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.token) {
-          localStorage.setItem('user', JSON.stringify(data.user));
-          localStorage.setItem('token', data.token);
-          window.location.reload();
-        } else {
-          // Mostrar mensaje de error
-          loginError.textContent = data.message || 'Inicio de sesión fallido';
-          loginError.style.display = 'block';
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(data => {
+            throw new Error(data.message || 'Inicio de sesión fallido');
+          });
         }
+        return response.json();
+      })
+      .then(data => {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('token', data.token);
+        loginLink.textContent = 'Cerrar sesión';
+        buttonContainer.style.display = 'flex';
+        if (loginContainer) {
+          loginContainer.style.display = 'none';
+        }
+        Swal.fire({
+          icon: 'success',
+          title: 'Inicio de sesión exitoso',
+          showConfirmButton: false,
+          timer: 1500
+        });
       })
       .catch(error => {
         console.error('Error:', error);
-        // Mostrar mensaje de error
-        loginError.textContent = 'Error en el servidor';
-        loginError.style.display = 'block';
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de inicio de sesión',
+          text: error.message,
+        });
       });
     });
   }

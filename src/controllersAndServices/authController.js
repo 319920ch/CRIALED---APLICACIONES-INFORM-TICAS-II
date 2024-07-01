@@ -26,17 +26,24 @@ exports.login = async (req, res) => {
     }
 
     // Verificar si la contraseña es correcta
-    const isMatch = await user.validatePassword(contrasena);
+    const isMatch = await bcrypt.compare(contrasena, user.contrasena);
 
     if (!isMatch) {
       console.log('Password does not match');
       return res.status(401).json({ message: 'Contraseña incorrecta' });
     }
 
-    // Generar un token JWT
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    // Generar el token JWT
+    const token = jwt.sign(
+      { id: user.id, nombre: user.nombre, id_rol: user.id_rol },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    res.json({ token, user });
+    // Guardar el ID del usuario en la sesión
+    req.session.userId = user.id;
+
+    res.json({ token, user: { nombre: user.nombre, correo_electronico: user.correo_electronico, id_rol: user.id_rol } });
   } catch (error) {
     console.error('Server error:', error); // Log para depuración
     res.status(500).json({ message: 'Error en el servidor' });
@@ -68,9 +75,13 @@ exports.register = async (req, res) => {
       id_rol
     });
 
-    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    // Verificar que estamos obteniendo el ID del nuevo usuario
+    console.log('New User ID:', newUser.id); // Agregar registro para depuración
 
-    res.status(201).json({ token, user: newUser });
+    // Guardar el ID del nuevo usuario en la sesión
+    req.session.userId = newUser.id;
+
+    res.status(201).json({ message: 'Registro exitoso', user: newUser });
   } catch (error) {
     console.error('Server error:', error);
     res.status(500).json({ message: 'Error en el servidor' });

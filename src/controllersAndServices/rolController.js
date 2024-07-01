@@ -1,26 +1,17 @@
-const {
-  createRolService,
-  getRolesService,
-  getRolByIdService,
-  updateRolService,
-  deleteRolService
-} = require('./rolService');
+const rolService = require('../controllersAndServices/rolService');
 
 exports.createRol = async (req, res) => {
   try {
-    const rol = await createRolService(req.body);
+    const rol = await rolService.createRolService(req.body);
     res.status(201).json(rol);
   } catch (error) {
-    if (error.message === 'El nombre del rol ya está en uso') {
-      return res.status(400).json({ error: error.message });
-    }
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
-exports.getRoles = async (req, res) => {
+exports.getAllRoles = async (req, res) => {
   try {
-    const roles = await getRolesService();
+    const roles = await rolService.getRolesService();
     res.status(200).json(roles);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -29,7 +20,10 @@ exports.getRoles = async (req, res) => {
 
 exports.getRolById = async (req, res) => {
   try {
-    const rol = await getRolByIdService(req.params.id);
+    const rol = await rolService.getRolByIdService(req.params.id);
+    if (!rol) {
+      return res.status(404).json({ message: 'Rol no encontrado' });
+    }
     res.status(200).json(rol);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -38,18 +32,18 @@ exports.getRolById = async (req, res) => {
 
 exports.updateRol = async (req, res) => {
   try {
-    const rol = await updateRolService(req.params.id, req.body);
+    const rol = await rolService.updateRolService(req.params.id, req.body);
     res.status(200).json(rol);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
 exports.deleteRol = async (req, res) => {
   try {
-    await deleteRolService(req.params.id);
-    res.status(204).json({ message: 'Rol eliminado' });
+    await rolService.deleteRolService(req.params.id);
+    res.status(204).send();
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
